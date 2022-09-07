@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', 'Heebo', sans-serif;
+  outline: none;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: aliceblue;
+}
+
+.container {
+  max-width: 1300px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main {
+  min-height: 100vh;
+  width: 100%;
+}
+
+main #historic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main #historic h1 {
+  font-size: 28px;
+  margin: 60px 0 30px 0;
+}
+
+main #historic #list--historic {
+  width: 100%;
+}
+
+main #historic #list--historic .item-list--historic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(218, 226, 233);
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin: 20px ;
+}
+
+main #historic #list--historic .item-list--historic #item-rigth a {
+  display: block;
+  font: bold normal 24px 'Roboto', sans-serif;
+  margin-bottom: 5px;
+  cursor: pointer;
+  color: black;
+
+}
+
+main #historic #list--historic .item-list--historic #item-rigth span {
+  font: normal normal 16px 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.658);
+}
+
+main #historic #list--historic .item-list--historic #item-left .trash {
+  float: right;
+
+}

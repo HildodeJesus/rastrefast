@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100vw;
+  background-color: rgb(0, 29, 71);
+  padding: 0 20px;
+}
+
+.header .nav {
+  display: flex;
+  align-items: center;
+}
+
+.header .nav li, .header .nav a  {
+  color: white;
+  padding: 5px 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header--left .nav .logo a img {
+  height: 45px;
+}
+
+.header--rigth .nav li {
+  padding: 7px 3px;
+}
+
+.header--rigth .nav .button {
+  background-color: rgb(0, 100, 214);
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+

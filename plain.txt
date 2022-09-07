@@ -1,0 +1,15 @@
+Aplicativo rastreará encomendas
+
+Onde tiraremos as informações: API Externa ou WebScraping
+
+Tecnologias: [
+  EJS (View Engine)
+  Node.js/Express.js (Desenvolver o back-end)
+  Express-session (uso de sessões com express)
+]
+
+Ideias: 
+  -> Pagina com input para pegar o código de rastreio
+  -> Pagina demonstrando o resultado
+  -> Pagina de historico
+
