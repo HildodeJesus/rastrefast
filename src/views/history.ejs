@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RastreFast - Favoritados</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/history.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <script>
+    let FF_FOUC_FIX;
+  </script>
+</head>
+
+<body>
+  <%- include('partials/header.ejs') %>
+
+  <main>
+    <div class="container">
+      <section id="history-container">
+        <h1>Seus Favoritos</h1>
+        <hr>
+        <ul id="history">
+          <% if(history.length > 0) { %>
+          <% history.forEach(order => { %>
+          <li class="history-order">
+            <div id="item-rigth">
+              <a href="/orders/show?code=<%= order.codeOrder%>"><%= order.name %></a>
+              <span><%= order.codeOrder %></span>
+            </div>
+            <div id="item-left">
+              <span class="trash">
+                <a href="/orders/delete/<%= order.id %>">🗑️</a>
+              </span>
+            </div>
+          </li>
+          <% }) %>
+          <% } else { %>
+          <li>Não há nada salvo</li>
+          <% } %>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+
+  <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

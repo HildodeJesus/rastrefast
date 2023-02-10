@@ -1,41 +1,40 @@
 footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  padding: 15px 40px;
-  margin-top: 40px;
-  border-top: solid 2px rgb(0, 40, 95);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100vw;
+	padding: 15px 40px;
+	border-top: solid 2px rgb(0, 40, 95);
 }
 
 footer .redes-socias {
-  display: flex;
+	display: flex;
 }
 
 footer .redes-socias li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 15px;
-  cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 15px;
+	cursor: pointer;
 }
 
 footer .redes-socias li img {
-  width: 30px;
-  margin-bottom: 5px;
+	width: 30px;
+	margin-bottom: 5px;
 }
 
 .references {
-  display: flex;
-  align-items: center;
-  background-color: rgb(0, 40, 95);
-  border-radius: 50%;
-  padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	background-color: rgb(0, 40, 95);
+	border-radius: 50%;
+	padding: 10px 20px;
 }
 
 .references span {
-  color: white;
+	color: white;
 }
 .references img {
-  height: 40px;
+	height: 40px;
 }

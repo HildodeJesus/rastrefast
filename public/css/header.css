@@ -1,36 +1,45 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  width: 100vw;
-  background-color: rgb(0, 29, 71);
-  padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+	width: 100vw;
+	background-color: rgb(0, 29, 71);
+	padding: 0 20px;
 }
 
 .header .nav {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
-.header .nav li, .header .nav a  {
-  color: white;
-  padding: 5px 5px;
-  font-weight: bold;
-  cursor: pointer;
+.header .nav li,
+.header .nav a {
+	color: white;
+	padding: 5px 5px;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .header--left .nav .logo a img {
-  height: 45px;
+	height: 45px;
 }
 
 .header--rigth .nav li {
-  padding: 7px 3px;
+	padding: 7px 3px;
 }
 
 .header--rigth .nav .button {
-  background-color: rgb(0, 100, 214);
-  border-radius: 10px;
-  padding: 10px 15px;
+	background-color: rgb(0, 100, 214);
+	border-radius: 10px;
+	padding: 10px 15px;
 }
 
+.btn-logout {
+	background: none;
+	outline: none;
+	border: none;
+	font: bold normal 1rem "Roboto", "Heebo", sans-serif;
+	color: white;
+	cursor: pointer;
+}

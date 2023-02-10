@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RastreFast - Resultado</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/result.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+  <%- include('partials/header.ejs') %>
+
+  <main>
+    <div class="container">
+      <section id="order-info">
+        <h1 id="order-code"><%= order.code %></h1>
+        <span id="current-state">-> <%= order.history[0].info %></span>
+        <span id="current-country">-> Hong Kong</span>
+      </section>
+
+      <section id="order-history">
+        <h1>Histórico do Pacote</h1>
+        <% if (order.history.length > 0) { %>
+        <ul id="history-list">
+          <% order.history.forEach(spot => { %>
+          <li class="history-list-item">
+            <span class="signal">-></span>
+            <span class="date-and-hours"><%= spot.hour %></span>
+            <h2 class="state"><%= spot.info %></h2>
+          </li>
+          <% }) %>
+        </ul>
+        <% } else { %>
+        <p>
+          Ainda não há informações do produto. Volte mais tarde!
+        </p>
+        <% } %>
+      </section>
+      <button id="btn-save">
+        Favoritar
+      </button>
+    </div>
+  </main>
+  <div id="modal-to-save">
+    <div id="btn-cancel"><span>X</span></div>
+    <form action="/orders/create" method="post" id="form-save">
+      <input type="hidden" name="userId" id="userId" value="<% if(user) {%> <%= user.id %> <% } %>">
+      <label for="codeOrder">Código de rastreio</label>
+      <input type="text" name="codeOrder" id="codeOrder" placeholder="Código de rastreio..." value="<%= order.code %>">
+      <label for="name">Nome:</label>
+      <input type="text" name="name" id="name" placeholder="Nome">
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+
+  <%- include('partials/footer.ejs') %>
+
+  <script>
+    const saveBtn = document.getElementById('btn-save')
+    const cancelBtn = document.querySelector('#btn-cancel > span')
+    const modalToSave = document.getElementById('modal-to-save')
+
+    saveBtn.addEventListener('click', () => {
+      modalToSave.style.display = 'flex'
+    })
+    cancelBtn.addEventListener('click', () => {
+      modalToSave.style.display = 'none'
+    })
+  </script>
+</body>
+
+</html>
