@@ -1,0 +1,24 @@
+.message-container {
+	margin: 0 auto;
+	max-width: 500px;
+}
+
+.errors-list,
+.success-list {
+	min-height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 15px;
+	padding: 20px 10px;
+}
+
+.errors-list {
+	border-left: rgb(201, 59, 59) solid 7px;
+	background-color: rgba(201, 59, 59, 0.253);
+}
+
+.success-list {
+	border-left: rgb(55, 143, 55) solid 7px;
+	background-color: rgba(55, 143, 55, 0.253);
+}

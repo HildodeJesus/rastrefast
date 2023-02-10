@@ -1,62 +1,39 @@
 require("dotenv").config();
-const port = process.env.PORT || 8000;
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const flash = require("connect-flash");
+const { resolve } = require("path");
+
 const app = express();
 
-app.set("view engine", "ejs");
+const sessionConfig = session({
+	secret: process.env.SECRET_SESSION,
+	resave: false,
+	saveUninitialized: false,
+	cookie: { maxAge: 1000 * 60 * 60 * 3, httpOnly: true },
+});
 
-app.use(express.static("public"));
-app.use(
-	session({
-		secret: process.env.SECRET_SESSION,
-		resave: false,
-		saveUninitialized: true,
-		cookie: { maxAge: 259200000 },
-	})
-);
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(sessionConfig);
+app.use(flash());
+app.set("view engine", "ejs");
+app.set("views", resolve(__dirname, "views"));
+app.use(express.static("public"));
 
-//Database
-const connection = require("./database/index");
+const homeRoutes = require("./routes/homeRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const userRoutes = require("./routes/userRoutes");
+const notFound = require("./middlewares/not-found");
+const handleError = require("./middlewares/handle-error");
+const globalVariable = require("./middlewares/global");
 
-//Rotas
-const router = require("./router");
-const ScrapingTracker = require("./services/scrapingTracker");
+app.use(globalVariable);
+app.use("/", homeRoutes);
+app.use("/", userRoutes);
+app.use("/orders", orderRoutes);
+app.use(handleError);
+app.use(notFound);
 
-app.get("/", async (req, res) => {
-	let user = [];
-	if (req.session.user != undefined) {
-		user.push({ ...req.session.user });
-	}
-	// await new ScrapingTracker('LB550648176HK').findTracker()
-
-	res.render("index", { user });
-});
-
-app.get("/about", async (req, res) => {
-	let user = [];
-	if (req.session.user != undefined) {
-		user.push(req.session.user);
-	}
-
-	res.render("about", { user });
-});
-
-app.use("/", router);
-
-const start = async () => {
-	try {
-		await connection
-			.authenticate()
-			.then(() => console.log("DB connected to success!!"));
-		app.listen(port, console.log(`Server listening of the port ${port}`));
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-start();
+module.exports = app;
